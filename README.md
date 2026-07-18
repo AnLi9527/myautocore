@@ -50,6 +50,3 @@
 源码来源：https://github.com/sirpdboy/myautocore
 
 ============================
-
-![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明2.jpg)
-
