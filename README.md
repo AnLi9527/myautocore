@@ -30,7 +30,7 @@
  
     make menuconfig
 	
-	# 找到 LuCI -> Applications, 选择 myautocore, 保存后退出。
+	# 找到 Extra packages, 选择 myautocore, 保存后退出。
 	
  ``` 
 ### 编译
