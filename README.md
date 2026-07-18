@@ -10,8 +10,6 @@
 
 <img src="doc/1.jpg" >
 <img src="doc/2.jpg" >
-## 编译使用方法 [![](https://img.shields.io/badge/-编译使用方法-F5F5F5.svg)](#编译使用方法-)
-
 
 ### 将myautocore添加至 LEDE/OpenWRT 源码的方法。
 
@@ -54,10 +52,4 @@
 ============================
 
 ![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明2.jpg)
-
-# My other project
-
-<a href="#readme">
-    <img src="https://img.shields.io/badge/-返回顶部-orange.svg" alt="图飞了😂" title="返回顶部" align="right"/>
-</a>
 
