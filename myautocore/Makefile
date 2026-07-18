@@ -8,24 +8,23 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=myautocore
-PKG_VERSION:=2
-PKG_RELEASE:=5
+PKG_NAME:=autocore
+PKG_RELEASE:=$(COMMITCOUNT)
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/target.mk
 
 define Package/myautocore-arm
   TITLE:=Arm auto core loadbalance script.
   MAINTAINER:=CN_SZTL
-  DEPENDS:=@(TARGET_bcm27xx||TARGET_bcm53xx||TARGET_ipq40xx||TARGET_ipq806x||TARGET_ipq807x||TARGET_mvebu||TARGET_rockchip||TARGET_armvirt) \
+  DEPENDS:=@(arm||aarch64||TARGET_bcm27xx||TARGET_bcm53xx||TARGET_ipq40xx||TARGET_ipq806x||TARGET_ipq807x||TARGET_mvebu||TARGET_rockchip||TARGET_armvirt) \
     +TARGET_bcm27xx:bcm27xx-userland +TARGET_bcm53xx:nvram +ethtool
   VARIANT:=arm
 endef
 
 define Package/myautocore-x86
   TITLE:=x86/x64 auto core loadbalance script.
-  MAINTAINER:=Lean
-  DEPENDS:=@TARGET_x86 +bc +lm-sensors +ethtool
+  DEPENDS:=@TARGET_x86 +bc +ethtool +lm-sensors +pciutils
   VARIANT:=x86
 endef
 
