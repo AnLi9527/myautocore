@@ -1,7 +1,6 @@
-# 
-# Copyright (C) 2010-2011 OpenWrt.org
-#  2021-2022 by sirpdboy  (sirpdboy@qq.com)
-#  2020  by lean
+#
+# Copyright (C) 2010-2023 OpenWrt.org
+#
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
@@ -28,40 +27,39 @@ define Package/myautocore-x86
   VARIANT:=x86
 endef
 
-define Package/myautocore-arm/description
-  A luci autoconfig hotplug script.
-endef
-
-define Package/myautocore-x86/description
-  A usb autoconfig hotplug script.
-endef
-
 define Build/Compile
 endef
 
 define Package/myautocore-arm/install
 	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_DATA) ./files/arm/index.htm $(1)/etc/
+	$(INSTALL_DATA) ./files/arm/index.htm $(1)/etc/index.htm
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
+	$(INSTALL_BIN) ./files/60-autocore-reload-rpcd $(1)/etc/uci-defaults/
 	$(INSTALL_BIN) ./files/arm/090-cover-index_htm $(1)/etc/uci-defaults/
 	$(INSTALL_DIR) $(1)/sbin
-	$(INSTALL_BIN) ./files/generic/cntime $(1)/sbin/
-	$(INSTALL_BIN) ./files/generic/cpuinfo $(1)/sbin/
-	$(INSTALL_BIN) ./files/generic/ethinfo $(1)/sbin/
-	$(INSTALL_BIN) ./files/arm/tempinfo $(1)/sbin/
+	$(INSTALL_BIN) ./files/arm/sbin/cpuinfo $(1)/sbin/cpuinfo
+	$(INSTALL_BIN) ./files/arm/sbin/ethinfo $(1)/sbin/ethinfo
+	$(INSTALL_BIN) ./files/arm/sbin/usage $(1)/sbin/usage
+ifneq ($(filter ipq% %filogic qualcommax%, $(TARGETID)),)
+	$(INSTALL_BIN) ./files/arm/sbin/tempinfo $(1)/sbin/tempinfo
+endif
+	$(INSTALL_DIR) $(1)/usr/share/rpcd/acl.d
+	$(CP) ./files/luci-mod-status-autocore.json $(1)/usr/share/rpcd/acl.d/
 endef
 
 define Package/myautocore-x86/install
 	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/x86/autocore $(1)/etc/init.d/
+	$(INSTALL_BIN) ./files/x86/autocore $(1)/etc/init.d/autocore
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_DATA) ./files/x86/index.htm $(1)/etc/index.htm
+	$(INSTALL_DIR) $(1)/etc/uci-defaults
+	$(INSTALL_BIN) ./files/60-autocore-reload-rpcd $(1)/etc/uci-defaults/
 	$(INSTALL_DIR) $(1)/sbin
-	$(INSTALL_BIN) ./files/generic/cntime $(1)/sbin/
-	$(INSTALL_BIN) ./files/generic/cpuinfo $(1)/sbin/
-	$(INSTALL_BIN) ./files/generic/ethinfo $(1)/sbin/
-	$(INSTALL_BIN) ./files/x86/tempinfo $(1)/sbin/
+	$(CP) ./files/x86/sbin/* $(1)/sbin
+	$(INSTALL_DIR) $(1)/usr/share/rpcd/acl.d
+	$(CP) ./files/luci-mod-status-autocore.json $(1)/usr/share/rpcd/acl.d/
 endef
 
-$(eval $(call BuildPackage,myautocore-arm))
-$(eval $(call BuildPackage,myautocore-x86))
+$(eval $(call BuildPackage,autocore-arm))
+$(eval $(call BuildPackage,autocore-loongarch64))
+$(eval $(call BuildPackage,autocore-x86))
