@@ -8,7 +8,7 @@
 
 ###  本着人人为我，我为人人的原则，增加温度，类型，网卡MAC，时间等更多详细内容显示。不敢独享，特分享出来，为OPENWRT添砖加瓦。
 
-### 将myautocore添加至 LEDE/OpenWRT 源码的方法。
+### 将myautocore添加至 OpenWRT 源码的方法。
 
 ### 下载源码方法：
 
