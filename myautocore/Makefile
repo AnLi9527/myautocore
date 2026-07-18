@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=autocore
+PKG_NAME:=myautocore
 PKG_RELEASE:=$(COMMITCOUNT)
 
 include $(INCLUDE_DIR)/package.mk
