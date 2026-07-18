@@ -1,4 +1,4 @@
-[myautocore 加强版预览信息OPENWRT专用](https://github.com/sirpdboy/myautocore)
+[myautocore 加强版预览信息OPENWRT专用]
 ======================
 请 **认真阅读完毕** 本页面，本页面包含注意事项和如何使用。
 
@@ -7,9 +7,6 @@
 ###  来源LEAN大的  autocore 脚本。
 
 ###  本着人人为我，我为人人的原则，增加温度，类型，网卡MAC，时间等更多详细内容显示。不敢独享，特分享出来，为OPENWRT添砖加瓦。
-
-<img src="doc/1.jpg" >
-<img src="doc/2.jpg" >
 
 ### 将myautocore添加至 LEDE/OpenWRT 源码的方法。
 
@@ -21,7 +18,7 @@
  
     # 下载源码
 
-    git clone https://github.com/sirpdboy/myautocore package/myautocore
+    git clone https://github.com/AnLi9527/myautocore package/myautocore
 	
     make menuconfig
 	
@@ -45,8 +42,6 @@
     make package/myautocore/compile V=s
  ```
 
-## 说明 [![](https://img.shields.io/badge/-说明-F5F5F5.svg)](#说明-)
+## 说明 
 
 源码来源：https://github.com/sirpdboy/myautocore
-
-============================
