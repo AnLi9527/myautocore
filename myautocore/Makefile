@@ -8,7 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=myautocore
-PKG_RELEASE:=$(COMMITCOUNT)
+PKG_VERSION:=2
+PKG_RELEASE:=5
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/target.mk
@@ -49,7 +50,7 @@ define Package/myautocore-arm/install
 	$(INSTALL_BIN) ./files/arm/sbin/cpuinfo $(1)/sbin/cpuinfo
 	$(INSTALL_BIN) ./files/arm/sbin/ethinfo $(1)/sbin/ethinfo
 	$(INSTALL_BIN) ./files/arm/sbin/usage $(1)/sbin/usage
-ifneq ($(filter ipq% %filogic qualcommax%, $(TARGETID)),)
+ifneq ($(filter ipq% %filogic qualcommax%, $(CONFIG_TARGET_BOARD)),)
 	$(INSTALL_BIN) ./files/arm/sbin/tempinfo $(1)/sbin/tempinfo
 endif
 	$(INSTALL_DIR) $(1)/usr/share/rpcd/acl.d
